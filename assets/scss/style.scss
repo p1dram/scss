@@ -1,0 +1,51 @@
+@import'variables';
+@import'mixins';
+$theme :light;//gray1,dark
+$color_main:red;
+@mixin alert ($color1,$width){
+    padding: 10px 20px ;
+    color: white;
+    border: $width solid $color;
+}
+.alert-info{
+    @include alert (red, 10px)
+}
+.alert-danger{
+    @include alert(blue,12px)
+}
+body{
+    @if $theme==dark{
+        background-color: darkblue;
+        color: white;
+    }
+    @else if $theme==gray1 {
+        background-color:gray;
+        color: black;
+    }
+    @else {
+        background-color: white;
+        color: darkblue;
+    }
+}
+
+.test1{
+  &:hover{
+    color: lighten($color_main, 20);
+  }
+}
+.test2{
+    &:hover{
+      color: darken($color_main, 20);
+    }
+  }
+  .test3{
+    &:hover{
+      color: opacify($color_main, 0);
+    }
+  }
+  .test4{
+    &:hover{
+      color: transparentize($color_main, 20);
+    }
+  }
+
